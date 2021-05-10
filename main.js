@@ -1,0 +1,1 @@
+(()=>{"use strict";const t={},e=function(e,o,c,i){let n=Object.create(t);return n.title=e,n.description=o,n.dueDate=c,n.priority=i,n};console.log(e("1","2","3","4")),console.log(e("a","b","c","d"))})();
