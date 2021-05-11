@@ -1,4 +1,6 @@
-import {createToDo} from "./todoItem";
+import { addToDoItem, createProject } from "./projectItem";
+import projectManager from "./projectManager";
+import { createToDo } from "./todoItem";
 
 //here everything will go together
 
@@ -10,6 +12,17 @@ import {createToDo} from "./todoItem";
 
 // default project at start to put todos in
 
-console.log(createToDo("1","2","3","4"));
+//get project array
+const projects = projectManager.getProjects();
+//add new project and return new length of projects array
+const newProj = projectManager.addProject(createProject("ROFL"));
+//get project of this array index
+const currentProj = projectManager.getProject(newProj-1);
+//adds todo to project
+addToDoItem(currentProj,createToDo("1","2","3","4"));
+console.log(projects);
+console.log(currentProj);
 
-console.log(createToDo("a","b","c","d"));
+
+
+//console.log(createProject("lul").createToDo("a","b","c","d"));
