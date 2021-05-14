@@ -10,25 +10,56 @@
     <div id="full-body">
         
         <div class="projects">
+          <div class="new-project">
+            <input class="new-project-toggle" type="radio" id="new-project-button" name="new-project" checked>
+            <label class="newProjectButton" for="new-project-button">+NEW PROJECT+</label> 
+          </div> 
+
           <input class="project-toggle" type="radio" id="project-title" name="todos" checked>
           <label class="projectButton" for="project-title">Project title1</label>   
           <div class="project">
             <div class="todos">
+              <div class="new-todo">
+                <input class="new-todo-toggle" type="radio" id="new-todo-button" name="new-todo" checked>
+                <label class="newTodoButton" for="new-todo-button">+NEW TO DO+</label> 
+              </div> 
+
               <input class="todo-toggle" type="radio" id="todo-title" name="todo" checked>
               <label class="todoButton" for="todo-title">Todo title1 
                 <p class="completion-status not-completed">not completed</p>
-                <p class="due-date">due: xd-xd-xdxd</p>
+                <div class="due-date">
+                  <p>due: xd-xd-xdxd</p>
+                </div>
               </label>                
               <div class="todo"> 
                 <div class="content">
-                  Content One
+                  <div class=new-checklist>
+                    <input class="new-checklist-toggle" type="radio" id="new-checklist-button" name="new-checklist" checked>
+                    <label class="newChecklistButton" for="new-checklist-button">+NEW ITEM+</label>
+                  </div>
+                  <div class="description">
+                    <h4 class="content-title">todo-title1</h4>
+                    <div class="short-description">
+                      this is where a short description will be present
+                    </div>
+                    <div class="checklist">
+                      <div class="checklist-item">
+                        <input class="checklist-toggle" type="checkbox" id="checklist-title" name="checklist" checked>
+                        <label class="checklistButton" for="checklist-title">checklist title1 
+                          <p>due date: xx-yy-zzzz</p>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
   
               <input class="todo-toggle" type="radio" id="todo-title2" name="todo" checked>
               <label class="todoButton" for="todo-title2">Todo title2
                 <p class="completion-status completed">completed</p>
-                <p class="due-date">due: xd-xd-xdxd</p>
+                <div class="due-date">
+                  <p>due: xd-xd-xdxd</p>
+                </div>
               </label> 
               <div class="todo">
                 <div class="content">
@@ -75,28 +106,36 @@
               </div>
             </div>  
         </div>
-
-          <!--
-          <input class="tab-toggle" type="radio" id="menu" name="tab" checked>
-          <label class="tabButton" for="menu">Menu</label>
-          <div class="tab">
-            <div class="content">
-              Content Two
-            </div>
-          </div>
-  
-          <input class="tab-toggle" type="radio" id="contact" name="tab" checked>
-          <label class="tabButton" for="contact">Contact</label> 
-          <div class="tab">
-            <div class="content">
-              Content Three
-            </div>
-          </div>          
-        </div>
-        -->
-      
-
     </div>
+
+    <div id="form-div">
+      <form id="create-form">
+          <h2 id = "form-title">Project/Todo/Checklist</h2>
+          <ul>
+              <li>
+                  <label for="element-title">Title:</label>
+                  <input type="text" id="element-title" name="title" placeholder="Write title here">
+              </li>
+              <li>
+                  <label for="element-description">Description: if available</label>
+                  <input type="text" id="element-description" name="description" placeholder="Write description here">
+              </li>
+              <li>
+                  <label for="priority">Priority</label>
+                  <input type="number" id="priority" name="priority" min=0 placeholder="0">
+              </li>
+              <li>
+                  <label for="due-date">Due date:</label>
+                  <input type="date" id="due-date" name="due-date">
+              </li>
+              <li>
+                  <button type="submit" >Submit</button>
+                  <!--onclick="getBookData(event)"-->
+              </li>
+          </ul>
+      </form>
+    </div>
+
     <script src="main.js"></script>
   </body>
 </html>
