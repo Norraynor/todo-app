@@ -1,6 +1,4 @@
-import { addToDoItem, createProject } from "./projectItem";
 import projectManager from "./projectManager";
-import { createToDo } from "./todoItem";
 
 //here everything will go together
 
@@ -12,6 +10,7 @@ import { createToDo } from "./todoItem";
 
 // default project at start to put todos in
 
+/*
 //get project array
 const projects = projectManager.getProjects();
 //add new project and return new length of projects array
@@ -23,6 +22,8 @@ addToDoItem(currentProj,createToDo("1","2","3","4"));
 console.log(projects);
 console.log(currentProj);
 
+*/
+console.log(projectManager.getProjects());
 
 
 //console.log(createProject("lul").createToDo("a","b","c","d"));

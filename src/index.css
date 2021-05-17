@@ -100,6 +100,7 @@
     border-radius: 3px;
     font-size: 1.5rem;
     width: 100%;
+    position: relative;
 }
 .projects .projectButton:hover {
     cursor: pointer;
@@ -123,71 +124,6 @@
     height: 100vh;
     background-color: aquamarine;
 }
-/*
-.tabs {
-    margin: 10px auto 0 auto;
-    max-width: 500px;
-    height: 300px;
-    position: relative;
-  }
-  .tabs input.tab-toggle {
-    position: absolute;
-    opacity: 0;
-  }
-  .tabs input.tab-toggle:checked + label {
-    background: transparent;
-    color: white;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  }
-  .tabs input.tab-toggle:checked  {
-    background: transparent;
-  }
-  .tabs input.tab-toggle:checked + label + .tab {
-    visibility: visible;
-    opacity: 1;
-    background: transparent;
-    color:black;
-    text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;
-    
-  }
-  .tabs label {
-    float: left;
-    font-size: 16px;
-    line-height: 16px;
-    border-radius: 3px 3px 0 0;
-    color:black;
-    text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;
-  }
-  .tabs label:first-of-type + .tab {
-    border-radius: 0 3px 3px 3px;
-  }
-  .tabs .tabButton {
-    display: block;
-    padding: 20px;
-    border-radius: 3px;
-    font-size: 2rem;
-  }
-  .tabs .tabButton:hover {
-    cursor: pointer;
-    background: rgba(0, 0, 0, .1);
-  }
-  .tabs .tab {
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    padding: 20px;
-    top: 56px;
-    left: 0;
-    min-width: 100%;
-    height: 244px;
-    background: white;
-    border-radius: 3px;
-    margin-top: 5px;
-  }
-  .content{
-    text-align: center;
-  }
-  */
 
 .todos{
     /*margin: 10px auto 0 auto;
@@ -268,10 +204,11 @@
 }
 .todos .todoButton {
     display: block;
-    padding: 15px;
+    padding: 20px;
     border-radius: 3px;
     font-size: 1rem;
     width:100%;
+    position: relative;
 }
 .todos .todoButton:hover {
     cursor: pointer;
@@ -318,11 +255,17 @@
 .completion-status{
     font-size: 8px;
     line-height: 8px;
+    position: absolute;
+    right:40px;
+    top: 10px;
 }
 .due-date{
     color:black;
     font-size: 9px;
     line-height: 9px;
+    position: absolute;
+    right:40px;
+    bottom: 5px;
 }
 .content-title{
     text-align: center;
@@ -393,6 +336,10 @@
     border-style: solid;
     border-width: 1px;
 }
+.checklist-item{
+    border-bottom: 1px;
+    border-style: solid;
+}
 
 /*
 -------
@@ -420,6 +367,7 @@ form {
 }
 #create-form{
     display: none;
+    background-color: yellow;
 }
 #create-form h2{
     margin:10px 0;
@@ -434,4 +382,48 @@ ul {
   
 form li + li {
     margin-top: 1em;    
+}
+
+/*
+-------
+*/
+.arrows{
+    float:right;
+}
+.arrow{
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 5px;
+  background-color: transparent;
+  margin: 10px;
+  position:absolute;
+  right: 5px;
+}
+.todoButton .arrow{
+    padding: 4px;
+}
+.arrow:hover{
+    background-color: rgba(0, 0, 0, .1);
+}
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  top:5px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  bottom:5px;
 }
