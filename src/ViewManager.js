@@ -1,9 +1,17 @@
 //here is where it will display everything and do DOM stuff
 
+import form from "./form";
 import projectManager from "./projectManager";
 
-const viewManager = (function viewManager (){
-    //let projectArray = [];
+const viewManager = (function viewManager(){
+    //button controller
+    const newProjectButton = document.querySelector(".newProjectButton");
+    newProjectButton.addEventListener("click",()=>{
+        form.showForm();
+        form.projectForm();
+    })
+    const newToDoButton = document.querySelector(".newTodoButton");
+    const newChecklistButton = document.querySelector(".newChecklistButton");
     //stuff to display projects
     function displayProjects(){
         const projects = projectManager.getProjects();
@@ -32,4 +40,4 @@ const viewManager = (function viewManager (){
 
 })();
 
-export default projectManager;
+export default viewManager;

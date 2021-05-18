@@ -1,14 +1,22 @@
-const checklist = function(){
-    const createChecklistItem = function(title, dueDate, priority) {
-        let checklistObj = Object.create(checklistItem);
-        checklistObj.title = title;
-        checklistObj.dueDate = dueDate;
-        checklistObj.priority = priority;
-    
-        return checklistObj;  
+const checklist = function(title, dueDate, priority){    
+    title: title;
+    dueDate: dueDate;
+    priority: priority;
+
+    function getTitle(){
+        return title;
     }
+    function getDueDate(){
+        return dueDate;
+    }
+    function getPriority(){
+        return priority;
+    }
+
     return{
-        createChecklistItem
+        getTitle,
+        getDueDate,
+        getPriority
     }
 };
 

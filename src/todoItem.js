@@ -1,21 +1,32 @@
-const toDo = function(){
-    const createToDo = function(title, description, dueDate, priority) {
-        let todoObj = Object.create(toDo);
-        todoObj.title = title;
-        todoObj.description = description;
-        todoObj.dueDate = dueDate;
-        todoObj.priority = priority;
-        todoObj.checklistArray = [];
+const toDo = function(title, description, dueDate, priority){
+    title: title;
+    description: description;
+    dueDate: dueDate;
+    priority: priority;
+    let checklistArray = [];
     
-        return todoObj;  
+    function addChecklistItem(checklistItem){
+        checklistArray.push(checklistItem);
     }
-    const addChecklistItem = function(toDo,checklistItem){
-        toDo.checklistArray.push(checklistItem);
+    function getTitle(){
+        return title;
+    }
+    function getDescription(){
+        return description;
+    }
+    function getDueDate(){
+        return dueDate;
+    }
+    function getPriority(){
+        return priority;
     }
     
     return {
-        createToDo,
-        addChecklistItem
+        addChecklistItem,
+        getTitle,
+        getDescription,
+        getDueDate,
+        getPriority
     }
 };
 

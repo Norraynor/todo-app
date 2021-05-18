@@ -366,7 +366,6 @@ form {
     top:15vh;
 }
 #create-form{
-    display: none;
     background-color: yellow;
 }
 #create-form h2{
@@ -378,6 +377,10 @@ ul {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+ul input{
+    width: 70%;
+    float: right;
 }
   
 form li + li {
@@ -426,4 +429,11 @@ form li + li {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   bottom:5px;
+}
+
+.hide{
+    display: none;
+}
+.show{
+    display: block;
 }
