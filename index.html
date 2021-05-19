@@ -133,15 +133,15 @@
               </li>
               <li class="element-priority">
                   <label for="priority">Priority</label>
-                  <input type="number" id="priority" name="priority" min=0 placeholder="0">
+                  <input type="number" id="element-priority" name="priority" min=0 max=6 placeholder="0">
               </li>
               <li class="element-due-date">
                   <label for="due-date">Due date:</label>
-                  <input type="date" id="due-date" name="due-date">
+                  <input type="date" id="element-due-date" name="due-date">
               </li>
               <li>
-                  <button type="submit" >Submit</button>
-                  <!--onclick="getBookData(event)"-->
+                  <button id ="submit-button" type="submit">Submit</button>
+                  <p id = "alert"></p>
               </li>
           </ul>
       </form>
