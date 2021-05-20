@@ -358,7 +358,6 @@ form {
 }
 #form-div{
     position: absolute;
-    display: block;
     text-align: center;
     margin: 0 auto;
     left: 0;

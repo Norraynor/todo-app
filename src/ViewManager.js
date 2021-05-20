@@ -1,20 +1,19 @@
 //here is where it will display everything and do DOM stuff
 
-import form from "./form";
+import buttonController from "./buttonController";
 import projectManager from "./projectManager";
+import DOMPresets from "./DOMPresets";
+
 
 const viewManager = (function viewManager(){
-    //button controller
-    const newProjectButton = document.querySelector(".newProjectButton");
-    newProjectButton.addEventListener("click",()=>{
-        form.showForm();
-        form.projectForm();
-    })
-    const newToDoButton = document.querySelector(".newTodoButton");
-    const newChecklistButton = document.querySelector(".newChecklistButton");
+    DOMPresets.createProject("LMAO");
     //stuff to display projects
     function displayProjects(){
         const projects = projectManager.getProjects();
+    }
+    
+    function updateList(){
+        //here it will update view after any change
     }
     // display todos
     //display stuff related to todos like completed todo and due-date

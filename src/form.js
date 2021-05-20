@@ -70,11 +70,6 @@ const form = (function(){
 
     function getFormData(event){
         let canHide = true;
-        console.log(title.value);
-        console.log(description.value);
-        console.log(dueDate.value);
-        console.log(priority.value);
-        console.log(title);
         if(!title.value){
             alert.textContent = "Title missing";
             title.style.borderColor = "red";
@@ -120,13 +115,19 @@ const form = (function(){
         if(canHide){
             projectManager.addProject(project(title.value,description.value,priority.value,dueDate.value));
             alert.textContent = "";
-            console.log("submitted properly");
             hideForm();
             event.preventDefault();
             //clean form
+            cleanFormData();
             //updateList();
             //update send visual update 
         }
+    }
+    function cleanFormData(){
+        title.value = "";
+        description.value = "";
+        priority.value = "";
+        dueDate.value = "";
     }
     submit.addEventListener("click",getFormData);
 
