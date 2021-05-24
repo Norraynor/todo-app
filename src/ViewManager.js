@@ -10,6 +10,10 @@ const viewManager = (function viewManager(){
     //stuff to display projects
     function displayProjects(){
         const projects = projectManager.getProjects();
+        for(let i = 0;i<projects.length;i++){
+            console.log(projects[i].getTitle());
+            DOMPresets.createProject(projects[i].getTitle());
+        }
     }
     
     function updateList(){
@@ -29,13 +33,11 @@ const viewManager = (function viewManager(){
     const getProject = function(index){
         return projectArray[index];
     }
+    */
 
     return {
-        addProject,
-        getProject,
-        getProjects
+        displayProjects
     }
-    */
 
 })();
 

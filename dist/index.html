@@ -7,115 +7,58 @@
     <link rel="stylesheet" href="../src/index.css">
   </head>
   <body>
-    <div id="full-body">
-        
-        <div class="projects">
-          <div class="new-project">
-            <input class="new-project-toggle" type="button" id="new-project-button" name="new-project">
-            <label class="newProjectButton" for="new-project-button">+NEW PROJECT+</label> 
-          </div> 
-          <input class="project-toggle" type="radio" id="project-title" name="projects" checked>
-          <label class="projectButton" for="project-title">
-            Project title1
+    <div id="full-body">        
+      <div class="projects">
+        <div class="new-project">
+          <input class="new-project-toggle" type="button" id="new-project-button" name="new-project">
+          <label class="newProjectButton" for="new-project-button">+NEW PROJECT+</label> 
+        </div> 
+        <input class="project-toggle" type="radio" id="project-title" name="projects" checked>
+        <label class="projectButton" for="project-title">
+          Project title1
+          <div class="arrows">
+            <button class="priority-change arrow up"></button>
+            <button class="priority-change arrow down"></button>
+          </div>
+        </label>  
+      </div>
+      <div class="todos">
+        <div class="new-todo">
+          <input class="new-todo-toggle" type="radio" id="new-todo-button" name="new-todo" checked>
+          <label class="newTodoButton" for="new-todo-button">+NEW TO DO+</label> 
+        </div> 
+          <input class="todo-toggle" type="radio" id="todo-title" name="todo" checked>
+          <label class="todoButton" for="todo-title">Todo title1 
+            <p class="completion-status not-completed">not completed</p>
+            <div class="due-date">
+              <p>due: xd-xd-xdxd</p>
+            </div>
             <div class="arrows">
               <button class="priority-change arrow up"></button>
               <button class="priority-change arrow down"></button>
             </div>
-          </label>  
-          <div class="project">
-            <div class="todos">
-              <div class="new-todo">
-                <input class="new-todo-toggle" type="radio" id="new-todo-button" name="new-todo" checked>
-                <label class="newTodoButton" for="new-todo-button">+NEW TO DO+</label> 
-              </div> 
-
-              <input class="todo-toggle" type="radio" id="todo-title" name="todo" checked>
-              <label class="todoButton" for="todo-title">Todo title1 
-                <p class="completion-status not-completed">not completed</p>
-                <div class="due-date">
-                  <p>due: xd-xd-xdxd</p>
-                </div>
-
-                <div class="arrows">
-                  <button class="priority-change arrow up"></button>
-                  <button class="priority-change arrow down"></button>
-                </div>
-              </label>                
-              <div class="todo"> 
-                <div class="content">
-                  <div class=new-checklist>
-                    <input class="new-checklist-toggle" type="radio" id="new-checklist-button" name="new-checklist" checked>
-                    <label class="newChecklistButton" for="new-checklist-button">+NEW ITEM+</label>
-                  </div>
-                  <div class="description">
-                    <h4 class="content-title">todo-title1</h4>
-                    <div class="short-description">
-                      this is where a short description will be present
-                    </div>
-                    <div class="checklist">
-                      <div class="checklist-item">
-                        <input class="checklist-toggle" type="checkbox" id="checklist-title" name="checklist" checked>
-                        <label class="checklistButton" for="checklist-title">checklist title1 
-                          <p>due date: xx-yy-zzzz</p>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-              <input class="todo-toggle" type="radio" id="todo-title2" name="todo" checked>
-              <label class="todoButton" for="todo-title2">Todo title2
-                <p class="completion-status completed">completed</p>
-                <div class="due-date">
-                  <p>due: xd-xd-xdxd</p>
-                </div>
-              </label> 
-              <div class="todo">
-                <div class="content">
-                  Content two
-                </div>
-              </div>       
-  
-              <input class="todo-toggle" type="radio" id="todo-title3" name="todo" checked>
-              <label class="todoButton" for="todo-title3">Todo title3</label>  
-              <div class="todo"> 
-                <div class="content">
-                  Content three
-                </div> 
-              </div>
-            </div>           
-          </div>       
-
-          <input class="project-toggle" type="radio" id="project-title2" name="projects" checked>
-          <label class="projectButton" for="project-title2">Project title2</label>
-          <div class="project">
-            <div class="todos">
-              <input class="todo-toggle" type="radio" id="todo-titlea" name="todo" checked>
-              <label class="todoButton" for="todo-titlea">Todo titleA</label>    
-              <div class="todo">
-                <div class="content">
-                  Content A
-                </div>
-              </div>
-  
-              <input class="todo-toggle" type="radio" id="todo-titleb" name="todo" checked>
-              <label class="todoButton" for="todo-titleb">Todo titleB</label> 
-              <div class="todo">
-                <div class="content">
-                  Content B
-                </div>    
-              </div>     
-  
-              <input class="todo-toggle" type="radio" id="todo-titlec" name="todo" checked>
-              <label class="todoButton" for="todo-titlec">Todo titleC</label>   
-              <div class="todo">
-                <div class="content">
-                  Content C
-                </div>
-              </div>
-            </div>  
+          </label>    
+      </div>           
+      <div class="checklists">
+        <div class=new-checklist>
+          <input class="new-checklist-toggle" type="radio" id="new-checklist-button" name="new-checklist" checked>
+          <label class="newChecklistButton" for="new-checklist-button">+NEW ITEM+</label>
         </div>
+        <div class="description">
+          <h4 class="content-title">todo-title1</h4>
+          <div class="short-description">
+            this is where a short description will be present
+          </div>
+          <div class="checklist">
+            <div class="checklist-item">
+              <input class="checklist-toggle" type="checkbox" id="checklist-title" name="checklist" checked>
+              <label class="checklistButton" for="checklist-title">checklist title1 
+                <p>due date: xx-yy-zzzz</p>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div id="form-div" class="hide">

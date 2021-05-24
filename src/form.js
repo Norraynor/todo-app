@@ -2,6 +2,7 @@
 
 import project from "./projectItem";
 import projectManager from "./projectManager";
+import viewManager from "./ViewManager";
 
 //change form and display it or hide it
 const form = (function(){
@@ -18,6 +19,7 @@ const form = (function(){
     const alert = document.querySelector("#alert");
     const submit = document.querySelector("#submit-button");
     let form = "";
+    //object for keeping data form to be used in project/todo creation
 
     function showForm(){
         formDiv.classList.remove("hide");
@@ -121,6 +123,7 @@ const form = (function(){
             cleanFormData();
             //updateList();
             //update send visual update 
+            viewManager.displayProjects();
         }
     }
     function cleanFormData(){

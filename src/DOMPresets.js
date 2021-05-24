@@ -4,7 +4,7 @@ const DOMPresets = (function(){
         const projectInput = document.createElement("input");
         projectInput.classList.add("project-toggle");
         projectInput.type = "radio";
-        let titleID = title.replace("/\s/g","-");
+        let titleID = title.split(" ").join("-");
         projectInput.id = titleID;
         projectInput.name = "projects";
         projectInput.checked = "";
@@ -27,7 +27,7 @@ const DOMPresets = (function(){
         projects.appendChild(projectLabel);
         projects.appendChild(projectContainer);       
     }
-    function todos(){
+    function createTodos(){
         
     }
     /*
