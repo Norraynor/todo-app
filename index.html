@@ -13,20 +13,24 @@
           <input class="new-project-toggle" type="button" id="new-project-button" name="new-project">
           <label class="newProjectButton" for="new-project-button">+NEW PROJECT+</label> 
         </div> 
-        <input class="project-toggle" type="radio" id="project-title" name="projects" checked>
-        <label class="projectButton" for="project-title">
-          Project title1
-          <div class="arrows">
-            <button class="priority-change arrow up"></button>
-            <button class="priority-change arrow down"></button>
-          </div>
-        </label>  
+        <div class = "project-container">
+          <input class="project-toggle" type="radio" id="project-title" name="projects" checked>
+          <label class="projectButton" for="project-title">
+            Project title1
+            <div class="arrows">
+              <button class="priority-change arrow up"></button>
+              <button class="priority-change arrow down"></button>
+            </div>
+          </label>  
+        </div>
       </div>
+
       <div class="todos">
         <div class="new-todo">
-          <input class="new-todo-toggle" type="radio" id="new-todo-button" name="new-todo" checked>
+          <input class="new-todo-toggle" type="button" id="new-todo-button" name="new-todo" checked>
           <label class="newTodoButton" for="new-todo-button">+NEW TO DO+</label> 
         </div> 
+        <div class = "todo-container">
           <input class="todo-toggle" type="radio" id="todo-title" name="todo" checked>
           <label class="todoButton" for="todo-title">Todo title1 
             <p class="completion-status not-completed">not completed</p>
@@ -37,11 +41,13 @@
               <button class="priority-change arrow up"></button>
               <button class="priority-change arrow down"></button>
             </div>
-          </label>    
-      </div>           
+          </label>  
+        </div>            
+      </div> 
+
       <div class="checklists">
         <div class=new-checklist>
-          <input class="new-checklist-toggle" type="radio" id="new-checklist-button" name="new-checklist" checked>
+          <input class="new-checklist-toggle" type="button" id="new-checklist-button" name="new-checklist" checked>
           <label class="newChecklistButton" for="new-checklist-button">+NEW ITEM+</label>
         </div>
         <div class="description">
