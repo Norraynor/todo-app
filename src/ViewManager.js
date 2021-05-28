@@ -15,6 +15,7 @@ const viewManager = (function viewManager(){
             DOMPresets.createProject(projects[i].getTitle());
         }
     }
+    DOMPresets.defaultState();
     
     function updateList(){
         //here it will update view after any change

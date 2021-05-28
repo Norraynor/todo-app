@@ -1,6 +1,29 @@
+import buttonController from "./buttonController";
+
 const DOMPresets = (function(){
+  const projects = document.querySelector(".project-container");
+  const todos = document.querySelector(".todo-container");
+  function defaultState(){
+    projects.textContent = "";
+    todos.textContent = "";
+  }
+  function newElementButton(str){
+    const buttonDiv = document.createElement("div");
+    buttonDiv.classList.add(`new-${str}`);
+    const input = document.createElement("input");
+    input.classList.add(`new-${str}-toggle`);
+    input.type = "button";
+    input.id = `new-${str}-button`;
+    input.name = `new-${str}`;
+    const label = document.createElement("label");
+    label.classList.add(`new${str.charAt(0).toUpperCase()+str.slice(1)}Button`);
+    label.htmlFor = `new-${str}-button`;
+    label.innerText = "+NEW+"
+    buttonDiv.appendChild(input);
+    buttonDiv.appendChild(label);
+    return buttonDiv;
+  }
     function createProject(title){
-        const projects = document.querySelector(".projects");
         const projectInput = document.createElement("input");
         projectInput.classList.add("project-toggle");
         projectInput.type = "radio";
@@ -21,71 +44,66 @@ const DOMPresets = (function(){
         arrowsContainer.appendChild(upButton);
         arrowsContainer.appendChild(downButton);
         projectLabel.appendChild(arrowsContainer);
-        const projectContainer = document.createElement("div");
-        projectContainer.classList.add("project");
         projects.appendChild(projectInput);
-        projects.appendChild(projectLabel);
-        projects.appendChild(projectContainer);       
+        projects.appendChild(projectLabel);     
     }
-    function createTodos(){
-        
+    function createTodos(title,description,dueDate){
+      const input = document.createElement("input");
+      input.classList.add("todo-toggle");
+      input.type = "radio";
+      let titleID = title.split(" ").join("-");
+      input.id = titleID;
+      input.name = "todo";
+      input.checked = "";
+      const label = document.createElement("label");
+      label.classList.add("todoButton");
+      label.htmlFor = titleID;
+      label.innerText = title;
+      const para = document.createElement("p");
+      para.classList.add("completion-status", "not-completed");
+      para.textContent = "not completed";
+      label.appendChild(para);
+      const labelDiv = document.createElement("div");
+      labelDiv.classList.add("due-date");
+      const dueDatePara = document.createElement("p");
+      dueDatePara.textContent = dueDate;
+      labelDiv.appendChild(dueDatePara);
+      label.appendChild(labelDiv);
+      const arrowsContainer = document.createElement("div");
+      arrowsContainer.classList.add("arrows");
+      const upButton = document.createElement("button");
+      upButton.classList.add("priority-change", "arrow", "up");
+      const downButton = document.createElement("button");
+      downButton.classList.add("priority-change", "arrow", "down");
+      arrowsContainer.appendChild(upButton);
+      arrowsContainer.appendChild(downButton);
+      label.appendChild(arrowsContainer);
     }
-    /*
-    <input class="project-toggle" type="radio" id="project-title" name="projects" checked>
-          <label class="projectButton" for="project-title">
-            Project title1
-            <div class="arrows">
-              <button class="priority-change arrow up"></button>
-              <button class="priority-change arrow down"></button>
-            </div>
-          </label>   
-          <div class="project">
-            <div class="todos">
-              <div class="new-todo">
-                <input class="new-todo-toggle" type="radio" id="new-todo-button" name="new-todo" checked>
-                <label class="newTodoButton" for="new-todo-button">+NEW TO DO+</label> 
-              </div> 
-
-              <input class="todo-toggle" type="radio" id="todo-title" name="todo" checked>
-              <label class="todoButton" for="todo-title">Todo title1 
-                <p class="completion-status not-completed">not completed</p>
-                <div class="due-date">
-                  <p>due: xd-xd-xdxd</p>
-                </div>
-
-                <div class="arrows">
-                  <button class="priority-change arrow up"></button>
-                  <button class="priority-change arrow down"></button>
-                </div>
-              </label>                
-              <div class="todo"> 
-                <div class="content">
-                  <div class=new-checklist>
-                    <input class="new-checklist-toggle" type="radio" id="new-checklist-button" name="new-checklist" checked>
-                    <label class="newChecklistButton" for="new-checklist-button">+NEW ITEM+</label>
-                  </div>
-                  <div class="description">
-                    <h4 class="content-title">todo-title1</h4>
-                    <div class="short-description">
-                      this is where a short description will be present
-                    </div>
-                    <div class="checklist">
-                      <div class="checklist-item">
-                        <input class="checklist-toggle" type="checkbox" id="checklist-title" name="checklist" checked>
-                        <label class="checklistButton" for="checklist-title">checklist title1 
-                          <p>due date: xx-yy-zzzz</p>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-                       
-          </div>    
-          */
+    function createChecklist(title,description,dueDate){
+      const checklistItemDiv = document.createElement("div");
+      checklistItemDiv.classList.add("checklist-item");
+      const input = document.createElement("input");
+      input.classList.add("checklist-toggle");
+      input.type = "checkbox";
+      let titleID = title.split(" ").join("-");
+      input.id= titleID;
+      input.name = "checklist";
+      input.checked = "";
+      checklistItemDiv.appendChild(input);
+      const label = document.createElement("label");
+      label.classList.add("checklistButton");
+      label.htmlFor = titleID;
+      label.innerText = title;
+      const para = document.createElement("p");
+      para.textContent = dueDate;
+      label.appendChild(para);
+      checklistItemDiv.appendChild(label);
+    }
     return {
-        createProject
+        createProject,
+        defaultState,
+        createTodos,
+        createChecklist
     }
 })();
 export default DOMPresets;

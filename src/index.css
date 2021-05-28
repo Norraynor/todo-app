@@ -265,6 +265,8 @@
     text-align: center;
     border-style: solid;
     border-width: 1px;
+    position: absolute;
+    margin: 10px;
 }
 .checklist-item{
     border-bottom: 1px;
