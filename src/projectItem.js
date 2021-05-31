@@ -1,5 +1,6 @@
-const project = function(title){
+const project = function(title,checked = false){
     title: title;
+    checked: checked;
     let toDoArray = [];
     
     function addToDoItem(toDoItem){
@@ -11,6 +12,21 @@ const project = function(title){
     function getToDoItem(index){
         return toDoArray[index];
     }
+    function getSelected(){
+        let todo = "";
+        for(let i = 0;i<toDoArray.length;i++){
+            if(toDoArray[i].getChecked()){
+                todo = toDoArray[i];
+            }
+        }
+        return todo;
+    }
+    function setChecked(value){
+        checked = value;
+    }
+    function getChecked(){
+        return checked;
+    }
     function getTitle(){
         return title;
     }
@@ -19,7 +35,10 @@ const project = function(title){
         addToDoItem,
         getToDoItems,
         getToDoItem,
-        getTitle
+        getTitle,
+        setChecked,
+        getChecked,
+        getSelected
     }
 };
 

@@ -14,6 +14,27 @@ const projectManager = (function projectManager (){
     const getProject = function(index){
         return projectArray[index];
     }
+    const deselect = function(){
+        for(let i =0;i<projectArray.length;i++){
+            projectArray[i].setChecked(false);
+        }
+    }
+    const select = function(title){
+        for(let i =0;i<projectArray.length;i++){
+            if(projectArray[i].getTitle() === title){
+                projectArray[i].setChecked(true);
+            }
+        }
+    }
+    const getSelected = function(){
+        let proj = "";
+        for(let i = 0;i<projectArray.length;i++){
+            if(projectArray[i].getChecked()){
+                proj = projectArray[i];
+            }
+        }
+        return proj;
+    }
     addProject(templateProj);
     projectArray[0].addToDoItem(toDo("templateToDo","this is a template project","no dates yet",6));
     projectArray[0].getToDoItem(0).addChecklistItem(checklist("template checklist item","no dates yet",6));
@@ -21,7 +42,10 @@ const projectManager = (function projectManager (){
     return {
         addProject,
         getProject,
-        getProjects
+        getProjects,
+        deselect,
+        select,
+        getSelected
     }
 })();
 

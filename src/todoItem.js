@@ -1,8 +1,9 @@
-const toDo = function(title, description, dueDate, priority){
+const toDo = function(title, description, dueDate, priority, checked = false){
     title: title;
     description: description;
     dueDate: dueDate;
     priority: priority;
+    checked: checked;
     let checklistArray = [];
     
     function addChecklistItem(checklistItem){
@@ -20,13 +21,21 @@ const toDo = function(title, description, dueDate, priority){
     function getPriority(){
         return priority;
     }
+    function setChecked(value){
+        checked = value;
+    }
+    function getChecked(){
+        return checked;
+    }
     
     return {
         addChecklistItem,
         getTitle,
         getDescription,
         getDueDate,
-        getPriority
+        getPriority,
+        setChecked,
+        getChecked
     }
 };
 

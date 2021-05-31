@@ -1,7 +1,9 @@
 //forms handler
 
+import checklist from "./checklistItem";
 import project from "./projectItem";
 import projectManager from "./projectManager";
+import toDo from "./todoItem";
 import viewManager from "./ViewManager";
 
 //change form and display it or hide it
@@ -115,7 +117,19 @@ const form = (function(){
             }            
         }
         if(canHide){
-            projectManager.addProject(project(title.value,description.value,priority.value,dueDate.value));
+            switch(form){
+                case "project":
+                    projectManager.addProject(project(title.value,description.value,priority.value,dueDate.value));
+                break;
+                case "todo":
+                    if(projectManager.getSelected()){
+                        projectManager.getSelected().addToDoItem(toDo(title.value,description.value,priority.value,dueDate.value));                    
+                    }
+                break;
+                case "checklist":
+                    projectManager.getSelected().getSelected().addChecklistItem(checklist(title.value,dueDate.value,priority.value));
+                break;
+            }
             alert.textContent = "";
             hideForm();
             event.preventDefault();
