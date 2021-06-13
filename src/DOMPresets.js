@@ -5,9 +5,19 @@ const DOMPresets = (function(){
   const projects = document.querySelector(".project-container");
   const todos = document.querySelector(".todo-container");
   const description = document.querySelector(".description");
+
   function defaultState(){
+    defaultProjects();
+    defaultTodos();
+    defaultChecklist();
+  }
+  function defaultProjects(){
     projects.textContent = "";
+  }
+  function defaultTodos(){
     todos.textContent = "";
+  }
+  function defaultChecklist(){
     description.textContent = "";
   }
   function newElementButton(str){
@@ -31,7 +41,7 @@ const DOMPresets = (function(){
       projectInput.classList.add("project-toggle");
       projectInput.type = "radio";
       projectInput.checked = checked;
-      let titleID = title.split(" ").join("-");
+      let titleID = title.split(" ").join("-")+"-project";
       projectInput.id = titleID;
       projectInput.name = "projects";
       const projectLabel = document.createElement("label");
@@ -48,14 +58,14 @@ const DOMPresets = (function(){
       arrowsContainer.appendChild(downButton);
       projectLabel.appendChild(arrowsContainer);
       projects.appendChild(projectInput);
-      projects.appendChild(projectLabel);     
+      projects.appendChild(projectLabel);
   }
-  function createTodos(title,description,dueDate,checked = false){
+  function createTodos(title,dueDate,checked = false){
     const input = document.createElement("input");
     input.classList.add("todo-toggle");
     input.type = "radio";
     input.checked = checked;
-    let titleID = title.split(" ").join("-");
+    let titleID = title.split(" ").join("-")+"-todo";
     input.id = titleID;
     input.name = "todo";
     const label = document.createElement("label");
@@ -83,6 +93,7 @@ const DOMPresets = (function(){
     label.appendChild(arrowsContainer);
     todos.appendChild(input);
     todos.appendChild(label);
+    console.log(input);
   }
   function createChecklist(title,description,dueDate){
     const checklistItemDiv = document.createElement("div");
@@ -108,7 +119,10 @@ const DOMPresets = (function(){
       createProject,
       defaultState,
       createTodos,
-      createChecklist
+      createChecklist,
+      defaultProjects,
+      defaultTodos,
+      defaultChecklist
   }
 })();
 export default DOMPresets;

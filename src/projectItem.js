@@ -30,6 +30,20 @@ const project = function(title,checked = false){
     function getTitle(){
         return title;
     }
+    const deselect = function(){
+        for(let i =0;i<toDoArray.length;i++){
+            toDoArray[i].setChecked(false);
+        }
+    }
+    const select = function(title){
+        console.log(title);
+        title = title.replace("-todo","");
+        for(let i =0;i<toDoArray.length;i++){
+            if(toDoArray[i].getTitle() === title){
+                toDoArray[i].setChecked(true);
+            }
+        }
+    }
     
     return {
         addToDoItem,
@@ -38,7 +52,9 @@ const project = function(title,checked = false){
         getTitle,
         setChecked,
         getChecked,
-        getSelected
+        getSelected,
+        deselect,
+        select
     }
 };
 

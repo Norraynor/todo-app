@@ -120,11 +120,12 @@ const form = (function(){
             switch(form){
                 case "project":
                     projectManager.addProject(project(title.value,description.value,priority.value,dueDate.value));
+                    //viewManager.updateProjectList();
+                    viewManager.displayProjects();
                 break;
                 case "todo":
-                    if(projectManager.getSelected()){
-                        projectManager.getSelected().addToDoItem(toDo(title.value,description.value,priority.value,dueDate.value));                    
-                    }
+                    projectManager.getSelected().addToDoItem(toDo(title.value,description.value,priority.value,dueDate.value));  
+                    viewManager.displayProjects();
                 break;
                 case "checklist":
                     projectManager.getSelected().getSelected().addChecklistItem(checklist(title.value,dueDate.value,priority.value));
@@ -137,7 +138,7 @@ const form = (function(){
             cleanFormData();
             //updateList();
             //update send visual update 
-            viewManager.displayProjects();
+            viewManager.updateInputs();
         }
     }
     function cleanFormData(){

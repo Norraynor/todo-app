@@ -20,6 +20,8 @@ const projectManager = (function projectManager (){
         }
     }
     const select = function(title){
+        console.log(title);
+        title = title.replace("-project","");
         for(let i =0;i<projectArray.length;i++){
             if(projectArray[i].getTitle() === title){
                 projectArray[i].setChecked(true);
@@ -36,6 +38,7 @@ const projectManager = (function projectManager (){
         return proj;
     }
     addProject(templateProj);
+    templateProj.setChecked("true");
     projectArray[0].addToDoItem(toDo("templateToDo","this is a template project","no dates yet",6));
     projectArray[0].getToDoItem(0).addChecklistItem(checklist("template checklist item","no dates yet",6));
 
