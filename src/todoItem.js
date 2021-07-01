@@ -9,6 +9,12 @@ const toDo = function(title, description, dueDate, priority, checked = false){
     function addChecklistItem(checklistItem){
         checklistArray.push(checklistItem);
     }
+    function getChecklistItems(){
+        return checklistArray;
+    }
+    function getChecklistItem(index){
+        return checklistArray[index];
+    }
     function getTitle(){
         return title;
     }
@@ -27,6 +33,20 @@ const toDo = function(title, description, dueDate, priority, checked = false){
     function getChecked(){
         return checked;
     }
+    const deselect = function(){
+        for(let i =0;i<checklistArray.length;i++){
+            checklistArray[i].setChecked(false);
+        }
+    }
+    const select = function(title){
+        console.log(title);
+        title = title.replace("-todo","");
+        for(let i =0;i<checklistArray.length;i++){
+            if(checklistArray[i].getTitle() === title){
+                checklistArray[i].setChecked(true);
+            }
+        }
+    }
     
     return {
         addChecklistItem,
@@ -35,7 +55,11 @@ const toDo = function(title, description, dueDate, priority, checked = false){
         getDueDate,
         getPriority,
         setChecked,
-        getChecked
+        getChecked,
+        deselect,
+        select,
+        getChecklistItem,
+        getChecklistItems
     }
 };
 

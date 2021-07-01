@@ -1,7 +1,8 @@
-const checklist = function(title, dueDate, priority){    
+const checklist = function(title, dueDate, priority, checked = false){    
     title: title;
     dueDate: dueDate;
     priority: priority;
+    checked: checked;
 
     function getTitle(){
         return title;
@@ -12,11 +13,19 @@ const checklist = function(title, dueDate, priority){
     function getPriority(){
         return priority;
     }
+    function setChecked(value){
+        checked = value;
+    }
+    function getChecked(){
+        return checked;
+    }
 
     return{
         getTitle,
         getDueDate,
-        getPriority
+        getPriority,
+        setChecked,
+        getChecked
     }
 };
 

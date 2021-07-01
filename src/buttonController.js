@@ -2,7 +2,6 @@ import form from "./form";
 import projectManager from "./projectManager";
 
 const buttonController = (function(){
-    //button controller
     const newProjectButton = document.querySelector(".newProjectButton");
     newProjectButton.addEventListener("click",()=>{
         form.showForm();
@@ -19,8 +18,12 @@ const buttonController = (function(){
     })
     const newChecklistButton = document.querySelector(".newChecklistButton");
     newChecklistButton.addEventListener("click",()=>{
-        form.showForm();
-        form.checklistForm();
+        if(projectManager.getSelected().getSelected()){
+            form.showForm();
+            form.checklistForm();
+        }else{
+            alert("select To do");
+        }
     })
 })();
 

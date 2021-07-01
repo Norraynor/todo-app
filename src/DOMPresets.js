@@ -60,7 +60,7 @@ const DOMPresets = (function(){
       projects.appendChild(projectInput);
       projects.appendChild(projectLabel);
   }
-  function createTodos(title,dueDate,checked = false){
+  function createTodos(title,dueDate,description,checked = false){
     const input = document.createElement("input");
     input.classList.add("todo-toggle");
     input.type = "radio";
@@ -93,7 +93,18 @@ const DOMPresets = (function(){
     label.appendChild(arrowsContainer);
     todos.appendChild(input);
     todos.appendChild(label);
-    console.log(input);
+    if(checked){
+      //create todo in description in checklist
+      const description = document.querySelector(".description");
+      const todoTitle = document.createElement("h4");
+      todoTitle.classList.add("content-title");
+      todoTitle.textContent = title;
+      const todoDescription = document.createElement("div");
+      todoDescription.classList.add("short-description");
+      todoDescription.textContent = description;
+      description.appendChild(todoTitle);
+      description.appendChild(todoDescription);
+    }
   }
   function createChecklist(title,description,dueDate){
     const checklistItemDiv = document.createElement("div");
