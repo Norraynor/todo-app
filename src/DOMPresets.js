@@ -60,7 +60,7 @@ const DOMPresets = (function(){
       projects.appendChild(projectInput);
       projects.appendChild(projectLabel);
   }
-  function createTodos(title,dueDate,description,checked = false){
+  function createTodos(title,dueDate,checked = false){
     const input = document.createElement("input");
     input.classList.add("todo-toggle");
     input.type = "radio";
@@ -93,6 +93,7 @@ const DOMPresets = (function(){
     label.appendChild(arrowsContainer);
     todos.appendChild(input);
     todos.appendChild(label);
+    /*
     if(checked){
       //create todo in description in checklist
       const description = document.querySelector(".description");
@@ -104,9 +105,26 @@ const DOMPresets = (function(){
       todoDescription.textContent = description;
       description.appendChild(todoTitle);
       description.appendChild(todoDescription);
-    }
+    }*/
   }
-  function createChecklist(title,description,dueDate){
+  function updateToDoTitle(tTitle,tDescription){
+      const description = document.querySelector(".description");
+      description.textContent = "";
+      const todoTitle = document.createElement("h4");
+      todoTitle.classList.add("content-title");
+      todoTitle.textContent = tTitle;
+      const todoDescription = document.createElement("div");
+      todoDescription.classList.add("short-description");
+      todoDescription.textContent = tDescription;
+      const checklist = document.createElement("div");
+      checklist.classList.add("checklist");
+      description.appendChild(todoTitle);
+      description.appendChild(todoDescription);
+      description.appendChild(checklist);
+  }
+  function createChecklist(title,dueDate){
+    const description = document.querySelector(".description");
+    const checklist = document.querySelector(".checklist");
     const checklistItemDiv = document.createElement("div");
     checklistItemDiv.classList.add("checklist-item");
     const input = document.createElement("input");
@@ -116,7 +134,6 @@ const DOMPresets = (function(){
     input.id= titleID;
     input.name = "checklist";
     input.checked = "";
-    checklistItemDiv.appendChild(input);
     const label = document.createElement("label");
     label.classList.add("checklistButton");
     label.htmlFor = titleID;
@@ -124,7 +141,10 @@ const DOMPresets = (function(){
     const para = document.createElement("p");
     para.textContent = dueDate;
     label.appendChild(para);
+    checklistItemDiv.appendChild(input);
     checklistItemDiv.appendChild(label);
+    checklist.appendChild(checklistItemDiv);
+    description.appendChild(checklist);
   }
   return {
       createProject,
@@ -133,7 +153,8 @@ const DOMPresets = (function(){
       createChecklist,
       defaultProjects,
       defaultTodos,
-      defaultChecklist
+      defaultChecklist,
+      updateToDoTitle
   }
 })();
 export default DOMPresets;

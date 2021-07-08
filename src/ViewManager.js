@@ -34,10 +34,11 @@ const viewManager = (function viewManager(){
                 selectedProject.deselect();
                 selectedProject.select(event.target.id);  
                 console.log("currently selected todo: "+selectedProject.getSelected().getTitle());
+                DOMPresets.updateToDoTitle(selectedProject.getSelected().getTitle(),selectedProject.getSelected().getDescription());
                 //display checklist  
-                /*if(selectedProject.getSelected()){
+                if(selectedProject.getSelected()){
                     displayChecklist(selectedProject.getSelected()); 
-                } */
+                } 
             })
         }
         for(let i =0;i<inputsArr.length;i++){
@@ -74,8 +75,12 @@ const viewManager = (function viewManager(){
         if(selectedProject){
             for(let i = 0;i<selectedProject.getToDoItems().length;i++){
                 let currentTodo = selectedProject.getToDoItem(i);
-                DOMPresets.createTodos(currentTodo.getTitle() ,currentTodo.getDueDate(), currentTodo.getDescription() ,currentTodo.getChecked());
+                DOMPresets.createTodos(currentTodo.getTitle() ,currentTodo.getDueDate(),currentTodo.getChecked());
             }
+            if(selectedProject.getSelected()){
+                DOMPresets.updateToDoTitle(selectedProject.getSelected().getTitle(),selectedProject.getSelected().getDescription());
+            }
+            
             /*let selectedTodo = selectedProject.getSelected();
             if(selectedTodo){
                 displayChecklist(selectedTodo);
@@ -87,12 +92,14 @@ const viewManager = (function viewManager(){
     }
 
     function displayChecklist(selectedTodo){
-        DOMPresets.defaultTodos();
-        console.log(selectedTodo);
+        DOMPresets.defaultChecklist();
+        console.log(selectedTodo.getTitle());
+        DOMPresets.updateToDoTitle(selectedTodo.getTitle(),selectedTodo.getDescription());
+            
         if(selectedTodo){
             for(let i = 0;i<selectedTodo.getChecklistItems().length;i++){
                 let currentChecklist = selectedTodo.getChecklistItem(i);
-                DOMPresets.createChecklist(currentChecklist.getTitle(),selectedTodo.getDescription(),currentChecklist.getDueDate());
+                DOMPresets.createChecklist(currentChecklist.getTitle(),currentChecklist.getDueDate());
             }
         }
         else{
