@@ -125,10 +125,11 @@ const form = (function(){
                 break;
                 case "todo":
                     projectManager.getSelected().addToDoItem(toDo(title.value,description.value,priority.value,dueDate.value));  
-                    viewManager.displayProjects();
+                    viewManager.displayTodos();
                 break;
                 case "checklist":
                     projectManager.getSelected().getSelected().addChecklistItem(checklist(title.value,dueDate.value,priority.value));
+                    viewManager.displayProjects();
                 break;
             }
             alert.textContent = "";

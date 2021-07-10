@@ -20,10 +20,10 @@ const viewManager = (function viewManager(){
         for(let i =0;i<projectInputsArr.length;i++){
             projectInputsArr[i].addEventListener("change",(event)=>{
                 projectManager.deselect();
-                projectManager.select(event.target.id);  
+                projectManager.select(event.target.id); 
                 if(projectManager.getSelected()){
                     displayTodos(); 
-                }     
+                }    
             })
         }
         for(let i =0;i<todoInputsArr.length;i++){
@@ -47,7 +47,7 @@ const viewManager = (function viewManager(){
                 
                 selectedTodo.deselect();
                 selectedTodo.select(event.target.id);  
-                console.log("currently selected checklist: "+selectedTodo.getSelected().getTitle());
+                console.log("currently selected checklist: "+selectedTodo.getTitle());
                 //display checklist  
                 /*if(selectedProject.getSelected()){
                     displayChecklist(selectedProject.getSelected()); 
@@ -79,6 +79,7 @@ const viewManager = (function viewManager(){
             }
             if(selectedProject.getSelected()){
                 DOMPresets.updateToDoTitle(selectedProject.getSelected().getTitle(),selectedProject.getSelected().getDescription());
+                displayChecklist(selectedProject.getSelected());
             }
             
             /*let selectedTodo = selectedProject.getSelected();
@@ -126,6 +127,8 @@ const viewManager = (function viewManager(){
     displayProjects();
     return {
         displayProjects,
+        displayTodos,
+        displayChecklist,
         updateInputs
     }
 

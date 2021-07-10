@@ -40,7 +40,7 @@ const toDo = function(title, description, dueDate, priority, checked = false){
     }
     const select = function(title){
         console.log(title);
-        title = title.replace("-todo","");
+        title = title.replace("-checklist","");
         for(let i =0;i<checklistArray.length;i++){
             if(checklistArray[i].getTitle() === title){
                 checklistArray[i].setChecked(true);

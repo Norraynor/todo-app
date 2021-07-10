@@ -130,7 +130,7 @@ const DOMPresets = (function(){
     const input = document.createElement("input");
     input.classList.add("checklist-toggle");
     input.type = "checkbox";
-    let titleID = title.split(" ").join("-");
+    let titleID = title.split(" ").join("-")+"-checklist";;
     input.id= titleID;
     input.name = "checklist";
     input.checked = "";
