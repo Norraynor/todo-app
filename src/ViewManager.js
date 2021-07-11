@@ -15,38 +15,49 @@ const viewManager = (function viewManager(){
         const inputsArr = [...inputs];
         const projectInputsArr = [...projectInputs];
         const todoInputsArr = [...todoInputs];
+        /*
         console.log(projectInputsArr);
         console.log(inputsArr);
         console.log(todoInputsArr);
+        */
+        
+        function todoEvent(event){
+            let selectedProject = projectManager.getSelected();
+            selectedProject.deselect();
+            selectedProject.select(event.target.id);  
+            console.log("currently selected todo: "+selectedProject.getSelected().getTitle());
+            DOMPresets.updateToDoTitle(selectedProject.getSelected().getTitle(),selectedProject.getSelected().getDescription());
+            //display checklist  
+            if(selectedProject.getSelected()){
+                displayChecklist(selectedProject.getSelected()); 
+            } 
+        }
+        function checklistEvent(event){
+            let selectedTodo = projectManager.getSelected().getSelected();
+                
+            selectedTodo.deselect();
+            selectedTodo.select(event.target.id);  
+            console.log("currently selected checklist: "+selectedTodo.getTitle());
+            
+        }
         for(let i =0;i<projectInputsArr.length;i++){
-            projectInputsArr[i].addEventListener("change",(event)=>{
+            //--ensures that event is attached only once--
+            if(projectInputsArr[i].projectEvent){
+                projectInputsArr[i].removeEventListener("change",projectInputsArr[i].projectEvent);
+            }
+            projectInputsArr[i].projectEvent = (event)=>{
                 projectManager.deselect();
                 projectManager.select(event.target.id); 
-                displayTodos();   
-            })
+                displayTodos();  
+            }
+            projectInputsArr[i].addEventListener("change",projectInputsArr[i].projectEvent);
+            //--works!--
         }
         for(let i =0;i<todoInputsArr.length;i++){
-            todoInputsArr[i].addEventListener("change",(event)=>{
-                let selectedProject = projectManager.getSelected();
-                selectedProject.deselect();
-                selectedProject.select(event.target.id);  
-                console.log("currently selected todo: "+selectedProject.getSelected().getTitle());
-                DOMPresets.updateToDoTitle(selectedProject.getSelected().getTitle(),selectedProject.getSelected().getDescription());
-                //display checklist  
-                if(selectedProject.getSelected()){
-                    displayChecklist(selectedProject.getSelected()); 
-                } 
-            })
+            todoInputsArr[i].addEventListener("change",todoEvent)
         }
         for(let i =0;i<inputsArr.length;i++){
-            inputsArr[i].addEventListener("change",(event)=>{
-                let selectedTodo = projectManager.getSelected().getSelected();
-                
-                selectedTodo.deselect();
-                selectedTodo.select(event.target.id);  
-                console.log("currently selected checklist: "+selectedTodo.getTitle());
-                
-            })
+            inputsArr[i].addEventListener("change",checklistEvent)
         }
         
     }
@@ -61,6 +72,7 @@ const viewManager = (function viewManager(){
         if(selectedProject){
             displayTodos();
         }
+        updateInputs();
     }
 
     function displayTodos(){
@@ -75,12 +87,13 @@ const viewManager = (function viewManager(){
                 }
             }
             if(selectedProject.getSelected()){
-                displayChecklist(selectedProject.getSelected());
+                //displayChecklist(selectedProject.getSelected());
             }
         }
         else{
             //alert("select project");
         }
+        updateInputs();
     }
 
     function displayChecklist(selectedTodo){
