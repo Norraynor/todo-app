@@ -1,6 +1,8 @@
 import projectManager from "./projectManager";
 import viewManager from "./ViewManager";
 import form from "./form";
+import css from "./index.css"
+import "./index.css";
 
 //here everything will go together
 

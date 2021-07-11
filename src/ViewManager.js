@@ -17,20 +17,17 @@ const viewManager = (function viewManager(){
         const todoInputsArr = [...todoInputs];
         console.log(projectInputsArr);
         console.log(inputsArr);
+        console.log(todoInputsArr);
         for(let i =0;i<projectInputsArr.length;i++){
             projectInputsArr[i].addEventListener("change",(event)=>{
                 projectManager.deselect();
                 projectManager.select(event.target.id); 
-                if(projectManager.getSelected()){
-                    displayTodos(); 
-                }    
+                displayTodos();   
             })
         }
         for(let i =0;i<todoInputsArr.length;i++){
             todoInputsArr[i].addEventListener("change",(event)=>{
                 let selectedProject = projectManager.getSelected();
-                let selectedTodo = projectManager.getSelected().getSelected();
-                
                 selectedProject.deselect();
                 selectedProject.select(event.target.id);  
                 console.log("currently selected todo: "+selectedProject.getSelected().getTitle());
@@ -48,10 +45,7 @@ const viewManager = (function viewManager(){
                 selectedTodo.deselect();
                 selectedTodo.select(event.target.id);  
                 console.log("currently selected checklist: "+selectedTodo.getTitle());
-                //display checklist  
-                /*if(selectedProject.getSelected()){
-                    displayChecklist(selectedProject.getSelected()); 
-                } */
+                
             })
         }
         
@@ -76,16 +70,13 @@ const viewManager = (function viewManager(){
             for(let i = 0;i<selectedProject.getToDoItems().length;i++){
                 let currentTodo = selectedProject.getToDoItem(i);
                 DOMPresets.createTodos(currentTodo.getTitle() ,currentTodo.getDueDate(),currentTodo.getChecked());
+                if(currentTodo.getChecked()){
+                    DOMPresets.updateToDoTitle(selectedProject.getSelected().getTitle(),selectedProject.getSelected().getDescription());
+                }
             }
             if(selectedProject.getSelected()){
-                DOMPresets.updateToDoTitle(selectedProject.getSelected().getTitle(),selectedProject.getSelected().getDescription());
                 displayChecklist(selectedProject.getSelected());
             }
-            
-            /*let selectedTodo = selectedProject.getSelected();
-            if(selectedTodo){
-                displayChecklist(selectedTodo);
-            }*/
         }
         else{
             //alert("select project");
@@ -107,22 +98,7 @@ const viewManager = (function viewManager(){
             //alert("select project");
         }
     }
-
-    // display todos
-    //display stuff related to todos like completed todo and due-date
-    //display checklists
-    //display/hide form
-    /*
-    const addProject = function(project){
-        return projectArray.push(project);
-    }
-    const getProjects = function(){
-        return projectArray;
-    }
-    const getProject = function(index){
-        return projectArray[index];
-    }
-    */
+    
 
     displayProjects();
     return {
