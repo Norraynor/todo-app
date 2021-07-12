@@ -3,7 +3,9 @@
 import buttonController from "./buttonController";
 import projectManager from "./projectManager";
 import DOMPresets from "./DOMPresets";
-
+import "date-fns";
+import { compareAsc, parseISO } from "date-fns";
+import form from "./form";
 
 const viewManager = (function viewManager(){
     const projects = projectManager.getProjects();
@@ -85,6 +87,12 @@ const viewManager = (function viewManager(){
                 if(currentTodo.getChecked()){
                     DOMPresets.updateToDoTitle(selectedProject.getSelected().getTitle(),selectedProject.getSelected().getDescription());
                 }
+                if(compareAsc(Date.now(),parseISO(currentTodo.getDueDate()))===-1){
+                    DOMPresets.changeTodoCompletion(currentTodo,true);
+                }
+                else{
+                    DOMPresets.changeTodoCompletion(currentTodo,false);
+                }
             }
             if(selectedProject.getSelected()){
                 //displayChecklist(selectedProject.getSelected());
@@ -111,8 +119,12 @@ const viewManager = (function viewManager(){
             //alert("select project");
         }
     }
-    
-
+    /*
+    let loadedBJson = form.myStorage.getItem("projects");
+    console.log(loadedBJson);
+    let loaded = JSON.parse(form.myStorage.getItem("projects"));
+    console.log(loaded);
+    */
     displayProjects();
     return {
         displayProjects,

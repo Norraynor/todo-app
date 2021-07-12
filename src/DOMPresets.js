@@ -122,6 +122,19 @@ const DOMPresets = (function(){
       description.appendChild(todoDescription);
       description.appendChild(checklist);
   }
+  function changeTodoCompletion(todo,done=false){
+    const sTodo = document.querySelector(`#${todo.getTitle()}-todo+label`);
+    const selected = sTodo.querySelector(".completion-status"); 
+    if(done){
+      selected.classList.remove("not-completed");
+      selected.classList.add("completed");
+      selected.textContent = "before deadline";
+    }else{
+      selected.classList.remove("completed");
+      selected.classList.add("not-completed");
+      selected.textContent = "after deadline";
+    }
+  }
   function createChecklist(title,dueDate){
     const description = document.querySelector(".description");
     const checklist = document.querySelector(".checklist");
@@ -154,7 +167,8 @@ const DOMPresets = (function(){
       defaultProjects,
       defaultTodos,
       defaultChecklist,
-      updateToDoTitle
+      updateToDoTitle,
+      changeTodoCompletion
   }
 })();
 export default DOMPresets;
