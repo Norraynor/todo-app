@@ -142,8 +142,8 @@ const form = (function(){
             //update send visual update 
             viewManager.updateInputs();
             
-            //projectManager.saveAll();
-            //projectManager.loadAll();
+            projectManager.saveAll();
+            projectManager.loadAll();
         }
     }
     function cleanFormData(){
