@@ -22,7 +22,7 @@ const form = (function(){
     const submit = document.querySelector("#submit-button");
     let form = "";
     //object for keeping data form to be used in project/todo creation
-    let myStorage = window.localStorage;
+    //let myStorage = window.localStorage;
 
     function showForm(){
         formDiv.classList.remove("hide");
@@ -142,9 +142,8 @@ const form = (function(){
             //update send visual update 
             viewManager.updateInputs();
             
-            myStorage.clear();
-            myStorage.setItem("projects",JSON.stringify(projectManager.getProjects()));
-            console.log("what is the result?:"+JSON.stringify(projectManager.getProjects()));
+            //projectManager.saveAll();
+            //projectManager.loadAll();
         }
     }
     function cleanFormData(){
@@ -161,8 +160,7 @@ const form = (function(){
         projectForm,
         toDoForm,
         checklistForm,
-        getFormData,
-        myStorage
+        getFormData
     }
 })();
 

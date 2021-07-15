@@ -4,6 +4,10 @@ const checklist = function(title, dueDate, priority, checked = false){
     priority: priority;
     checked: checked;
 
+    function getParametersString(parentTitle){
+        let stringify = "checklist,"+title +","+ dueDate+","+ priority +","+checked+","+parentTitle;
+        return stringify;
+    }
     function getTitle(){
         return title;
     }

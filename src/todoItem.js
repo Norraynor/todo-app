@@ -9,6 +9,10 @@ const toDo = function(title, description, dueDate, priority, checked = false){
     function addChecklistItem(checklistItem){
         checklistArray.push(checklistItem);
     }
+    function getParametersString(parentTitle){
+        let stringify = "todo,"+title +","+description+","+ dueDate+","+ priority +","+checked+","+parentTitle;
+        return stringify;
+    }
     function getChecklistItems(){
         return checklistArray;
     }
@@ -59,7 +63,8 @@ const toDo = function(title, description, dueDate, priority, checked = false){
         deselect,
         select,
         getChecklistItem,
-        getChecklistItems
+        getChecklistItems,
+        getParametersString
     }
 };
 

@@ -8,7 +8,8 @@ import { compareAsc, parseISO } from "date-fns";
 import form from "./form";
 
 const viewManager = (function viewManager(){
-    const projects = projectManager.getProjects();
+        const projects = projectManager.getProjects();
+    
 
     function updateInputs(){
         const inputs = document.querySelectorAll(".checklist-toggle");

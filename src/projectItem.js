@@ -3,8 +3,13 @@ const project = function(title,checked = false){
     checked: checked;
     let toDoArray = [];
     
+    
     function addToDoItem(toDoItem){
         toDoArray.push(toDoItem);
+    }
+    function getParametersString(){
+        let stringify = "project,"+title +","+checked;
+        return stringify;
     }
     function getToDoItems(){
         return toDoArray;
@@ -54,7 +59,8 @@ const project = function(title,checked = false){
         getChecked,
         getSelected,
         deselect,
-        select
+        select,
+        getParametersString
     }
 };
 
