@@ -6,10 +6,9 @@ import DOMPresets from "./DOMPresets";
 import "date-fns";
 import { compareAsc, parseISO } from "date-fns";
 import form from "./form";
+import storManager from "./storageManager";
 
-const viewManager = (function viewManager(){
-        const projects = projectManager.getProjects();
-    
+const viewManager = (function viewManager(){    
 
     function updateInputs(){
         const inputs = document.querySelectorAll(".checklist-toggle");
@@ -25,10 +24,11 @@ const viewManager = (function viewManager(){
         */
         
         function todoEvent(event){
+            storManager.loadAll();
             let selectedProject = projectManager.getSelected();
             selectedProject.deselect();
             selectedProject.select(event.target.id);  
-            console.log("currently selected todo: "+selectedProject.getSelected().getTitle());
+            //console.log("currently selected todo: "+selectedProject.getSelected().getTitle());
             DOMPresets.updateToDoTitle(selectedProject.getSelected().getTitle(),selectedProject.getSelected().getDescription());
             //display checklist  
             if(selectedProject.getSelected()){
@@ -67,6 +67,7 @@ const viewManager = (function viewManager(){
     
     //stuff to display projects
     function displayProjects(){
+        const projects = projectManager.getProjects();
         DOMPresets.defaultState();
         for(let i = 0;i<projects.length;i++){
             DOMPresets.createProject(projects[i].getTitle(),projectManager.getProject(i).getChecked());

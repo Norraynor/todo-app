@@ -3,6 +3,7 @@
 import checklist from "./checklistItem";
 import project from "./projectItem";
 import projectManager from "./projectManager";
+import storManager from "./storageManager";
 import toDo from "./todoItem";
 import viewManager from "./ViewManager";
 
@@ -142,8 +143,8 @@ const form = (function(){
             //update send visual update 
             viewManager.updateInputs();
             
-            projectManager.saveAll();
-            projectManager.loadAll();
+            storManager.saveAll();
+            storManager.loadAll();
         }
     }
     function cleanFormData(){
