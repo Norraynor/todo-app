@@ -24,7 +24,6 @@ const viewManager = (function viewManager(){
         */
         
         function todoEvent(event){
-            storManager.loadAll();
             let selectedProject = projectManager.getSelected();
             selectedProject.deselect();
             selectedProject.select(event.target.id);  

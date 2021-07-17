@@ -44,7 +44,14 @@ const projectManager = (function projectManager (){
     templateProj.setChecked("true");
     projectArray[0].addToDoItem(toDo("templateToDo","this is a template project","no dates yet",6));
     projectArray[0].getToDoItem(0).addChecklistItem(checklist("template checklist item","no dates yet",6));
-
+    projectArray[0].addToDoItem(toDo("templateToDo1","this is a template project","no dates yet",6));
+    projectArray[0].addToDoItem(toDo("templateToDo2","this is a template project","no dates yet",6));
+    addProject(project("project1"));
+    projectArray[1].addToDoItem(toDo("projectTodo","this is a template project","no dates yet",6));
+    projectArray[1].addToDoItem(toDo("projectTodo1","this is a template project","no dates yet",6));
+    projectArray[1].addToDoItem(toDo("projectTodo2","this is a template project","no dates yet",6));
+    
+    
     return {
         addProject,
         getProject,

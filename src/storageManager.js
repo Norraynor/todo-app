@@ -10,6 +10,7 @@ const storManager = (function storManager (){
     function saveAll(){
         myStorage.clear();
         saveProjects();
+        
             
     }
     function loadAll(){
@@ -47,23 +48,48 @@ const storManager = (function storManager (){
                 }
             }
         }
-        viewManager.displayProjects();
+        //viewManager.displayProjects();
     }
-    /*function saveTodos(){
+    function saveTodos(){
         let projects = projectManager.getProjects();
-        let saveTodos = "";
+        let saveTodos = [];
+        let allSavedTodos = "";
         let stringArray = [];
         for(let i =0;i<projects.length;i++){
             let allTodos = projects[i].getToDoItems();
             for(let j = 0;j<allTodos.length;j++){
-                stringArray[i] = allTodos[i].getParametersString();
+                stringArray[j] = allTodos[i].getParametersString(projects[i].getTitle());
+            }
+            saveTodos[i] = stringArray.join(",");
+        }
+        allSavedTodos = saveTodos.join(",");
+        //saveProjects= projectArray.getParametersString().join(",");
+        myStorage.setItem("todos",JSON.stringify(allSavedTodos));
+    }
+    function loadTodos(){
+        const itemSize = 7;
+        let loadTodos = "";
+        loadTodos = JSON.parse(myStorage.getItem("todos"));
+        console.log(loadTodos);
+        let loadedTodosArray = loadProjects.split(",");
+        console.log(loadedTodosArray);
+        for(let i=0;i<loadedProjectsArray.length;i+=3){
+            let currentProject = loadedProjectsArray.slice(i,i+itemSize)
+            if(currentProject[0] === "project"){
+                console.log(currentProject);
+                if(currentProject[2]==="true"){
+                    projectManager.addProject(project(currentProject[1],true));
+                }
+                else{
+                    projectManager.addProject(project(currentProject[1],false));
+                }
             }
         }
-        saveProjects = stringArray.join(",");
-        //saveProjects= projectArray.getParametersString().join(",");
-        myStorage.setItem("projects",JSON.stringify(saveProjects));
-    }*/
-
+        viewManager.displayProjects();
+    }
+    saveAll();
+    projectManager.clearProjects();
+    loadAll();
     return{
         saveAll,
         loadAll
