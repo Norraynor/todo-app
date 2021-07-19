@@ -144,7 +144,7 @@ const form = (function(){
             viewManager.updateInputs();
             
             storManager.saveAll();
-            storManager.loadAll();
+            //storManager.loadAll();
         }
     }
     function cleanFormData(){

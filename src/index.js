@@ -27,8 +27,8 @@ console.log(projects);
 console.log(currentProj);
 
 */
-console.log(projectManager.getProjects()[0].getTitle());
-console.log(projectManager.getProjects()[0].getToDoItem(0).getTitle());
+//console.log(projectManager.getProjects()[0].getTitle());
+//console.log(projectManager.getProjects()[0].getToDoItem(0).getTitle());
 
 
 //console.log(createProject("lul").createToDo("a","b","c","d"));
